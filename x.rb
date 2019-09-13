@@ -2,6 +2,8 @@
 
 require 'open-uri'
 require 'fileutils'
+# require 'rb-readline'
+# require 'pry'
 
 petpage_input_file = File.open(ARGV[0], 'r')
 petpage = petpage_input_file.read
@@ -21,7 +23,7 @@ photobucket_urls.each do |photobucket_url|
   path = "./#{petname}#{URI.parse(photobucket_url).path}"
   puts "PATH: #{path}"
   FileUtils.mkpath(path.split('/').first(path.split('/').size - 1).join('/'))
-  cmd = "curl -o #{path} --referer \"http://s.photobucket.com/\" #{photobucket_url}"
+  cmd = "curl -o #{path} --referer \"https://s82.photobucket.com/\" #{photobucket_url}"
   puts cmd
   x = `#{cmd}`
   puts x
